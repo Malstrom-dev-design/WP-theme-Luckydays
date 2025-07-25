@@ -1,0 +1,238 @@
+/*
+Theme Name: Lucky days prints theme
+*/
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+:root{
+    --font-size-1: 96px;
+    --font-size-2: 48px;
+    --font-size-3: 42px;
+    --font-size-4: 36px;
+    --font-size-5: 30px;
+    --font-size-6: 24px;
+    --font-size-7: 16px;
+    --font-size-8: 12px;
+
+
+    --spacing-1: 96px;
+    --spacing-2: 72px;
+    --spacing-3: 60px;
+    --spacing-4: 48px;
+    --spacing-5: 36px;
+    --spacing-6: 30px;
+    --spacing-7: 24px;
+    --spacing-8: 12px;
+    --spacing-9: 6px;
+
+    --main-color: #FFF7E9;
+    --contrast-color: #1D1E23;
+    --accent-color-1: #FBC438;
+    --accent-color-2: #B3350C;
+
+    --nav-height: 80px;
+
+    --max-width:1200px;
+}
+
+@font-face {
+    font-family: 'Franxurter fat';
+    src: url('./assets/media/fonts/FranxurterTotallyFat-X3G4Z.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Franxurter medium';
+    src: url('./assets/media/fonts/FranxurterTotallyMedium-gxwjp.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto Mono';
+    src: url('./assets/media/fonts/RobotoMono-VariableFont_wght.ttf') format('truetype');
+}
+
+
+a{
+    text-decoration: none;
+    color: var(--bread-text-color);
+}
+li{
+    list-style: none;
+}
+
+body{
+    background-color: var(--main-color);
+    color: var(--contrast-color);
+    font-family: 'Roboto Mono';
+    font-size: var(--font-size-7);
+}
+
+main{
+    max-width: var(--max-width);
+    margin: 0 auto;
+    height: calc(100svh - var(--nav-height));
+}
+
+footer{
+    width: 100svw;
+    min-height: 140px;
+    background-color: var(--contrast-color);
+    color: var(--accent-color-1);
+    padding: var(--spacing-6);
+
+    .copyright-stamp{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+        gap:  var(--spacing-8);
+
+        .copyright-symbol{
+            height: fit-content;
+            font-size: var(--font-size-5);
+        }
+    }
+    .wrapper{
+        max-width: var(--max-width);
+        width: 100%;
+    }
+}
+
+#nav-container{
+    position: relative;
+    width: 100svw;
+    padding-top: var(--nav-height);
+
+    font-family: 'Franxurter medium';
+
+    .wrapper{
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: var(--nav-height);
+        width: 100%;
+        margin: 0 auto;
+        background-color: var(--main-color);
+
+
+        #logo{
+            position: absolute;
+            bottom: 0;
+            transform: translateY(50%);
+            background: url(./assets/media/images/logo.png) no-repeat;
+            background-size:contain;
+            height: 100px;
+            width: 150px;
+            left: var(--spacing-6);
+    
+        }
+    
+        #nav{
+            width: 100%;
+            max-width: var(--max-width);
+    
+            margin: 0 auto;
+    
+            & ul{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                gap: 24px;
+    
+                li a{
+                    font-size: var(--font-size-4);
+    
+                    &:hover{
+                        color: var(--accent-color-1);
+                        transition: color, 300ms ;
+                    }
+                }
+    
+            }
+        }
+    
+        #mobile-menu-button{
+            display: none;
+        }
+    }
+}
+/* Responsive */
+
+@media only screen and (max-width: 1080px){
+
+    #nav-container{
+        .wrapper{
+
+            #nav{
+                display: none;
+            }
+
+            #mobile-menu-button{
+                position: absolute;
+                right: var(--spacing-6);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 60px;
+                height: 24px;
+        
+                background: transparent;
+                border: none;
+                cursor: pointer;
+        
+                .line{
+                    width: 100%;
+                    height: 2px;
+                    border-radius: 20px;
+                    background-color: var(--contrast-color);
+                }
+            }
+        }
+
+
+
+        &.mobile-menu-active{        
+
+            .wrapper{
+
+                #nav{
+                    display: flex;
+
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100svh;
+                    width: 100svw;
+                    background: rgba(36, 35, 33, 0.6);
+                    max-width: none;
+        
+                    ul{
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        padding: var(--spacing-1) var(--spacing-6);
+                        width: 400px;
+                        margin-left:auto;
+                        background-color: var(--main-color);
+                    }
+                }
+
+                #mobile-menu-button{
+                    .line{
+                        background-color: var(--accent-color-1);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
