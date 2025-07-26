@@ -1,20 +1,20 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "components/slide-gallery",
-	"attributes": {
-    },
+	"name": "luckydaysprints/test-block",
 	"version": "0.1.0",
-	"title": "slide-gallery",
-	"category": "layout",
-	"description": "slide-gallery",
+	"title": "test-block",
+	"category": "text",
+	"icon": "smiley",
+	"description": "test-block",
 	"example": {},
+	"attributes":{},
 	"supports": {
 		"html": false
 	},
-	"textdomain": "slide-gallery",
+	"textdomain": "luckydaysprints",
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./editor.css",
+	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
 	"viewScript": "file:./view.js"
 }

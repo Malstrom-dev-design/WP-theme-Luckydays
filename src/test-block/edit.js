@@ -1,5 +1,5 @@
-import { useBlockProps} from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import { useBlockProps } from '@wordpress/block-editor';
 import './editor.scss';
 
 /**
@@ -10,12 +10,10 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
-export default function Edit({ }) {
-	const blockProps = useBlockProps({ className: 'appender slide-gallery' });
-
+export default function Edit() {
 	return (
-		<div {...blockProps}  >
-
-		</div>
+		<p { ...useBlockProps() }>
+			{ __( 'test – hello from the editor!', 'luckydaysprints' ) }
+		</p>
 	);
 }
