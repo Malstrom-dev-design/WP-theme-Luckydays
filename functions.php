@@ -55,4 +55,15 @@ function register_components_block_init() {
 }
 add_action( 'init', 'register_components_block_init' );
 
+// editor styling
+function add_editor_styles() {
+    add_theme_support('editor-styles');
+    add_editor_style('assets/css/editor.css');
+
+
+}
+add_action('after_setup_theme', 'add_editor_styles');
+// add_action('after_setup_editor', 'add_editor_styles');
+
 ?>
+

@@ -1,0 +1,299 @@
+.editable.contact-form{
+	min-width: 100svw;
+	background-color: var(--accent-color-1);
+	padding: 0px !important;
+	margin: 0px;
+	padding: var(--spacing-4) !important;
+
+
+	& .wrapper{
+		position: relative;
+		display: flex;
+		align-items: flex-start;
+		gap: var(--spacing-1);
+		width: 100%;
+		max-width: var(--max-width);
+		margin: 0px auto;
+
+		& >*{
+			padding-top: var(--spacing-1);
+		}
+
+		& .left-side{
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			width: 50%;
+
+			& .title{
+				position: absolute;
+				top: -116px;
+				text-align: center;
+			}
+
+			& .image-wrapper{
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+
+				img{
+					width: 100%;
+					height: fit-content;
+					max-width: 460px;
+					min-height: 200px;
+				}
+			}
+
+			& .contact-welcome-text{
+				font-size: var(--font-size-3);
+				text-align: center;
+				opacity: 0.78;
+
+				margin: 0px;
+
+				.text-line-1::before{
+					content: "För att ta kontakt";
+					text-align: center;
+					opacity: 0.78;
+					
+				}
+
+				.text-line-2::before{
+					content: "fyll i formuläret till höger!";
+					text-align: center;
+					opacity: 0.78;
+				}
+			}
+
+			& .select-order-wrapper{
+				position: relative;
+				display: flex;
+				justify-content: space-evenly;
+				flex-wrap: wrap;
+				width: 100%;
+				margin-top: var(--spacing-4);
+				.order-type-wrapper{
+					display: flex;
+					align-items: center;
+					width: fit-content;
+
+					.custom-radio-button{
+						position: relative;
+						display: flex;
+						align-items: center;
+						gap: var(--spacing-3);
+						height: 36px;
+						width: 36px;
+						border: 2px solid var(--contrast-color);
+						border-radius: var(--spacing-9);
+
+						&.checked{
+							& .line-1{
+							left: 5px;
+								transform-origin: left;
+								animation: draw-line-1 0.35s forwards;
+
+							}
+
+							& .line-2{
+								right: 5px;
+								transform-origin: right;
+								animation: draw-line-2 0.35s forwards;
+								animation-delay: 0.4s;
+
+							}
+						}
+
+
+						& input[type="radio"]{
+							opacity: 0;
+							position: absolute;
+							width: 100%;
+							height: 100%;    
+
+						}
+
+						& .line{
+							position: absolute;
+							top: 3px ;
+							width: 100%;
+							height: 4px;
+							background-color: var(--accent-color-2);
+							opacity: 0;
+							border-radius: 20px;
+
+
+							&.line-1{
+								transform: rotate(45deg);
+
+							}
+
+							&.line-2{
+								transform: rotate(-45deg);
+							}
+						}
+					}
+
+					& .label{
+						font-size: var(--font-size-6);
+						margin:var(--spacing-8);
+						background-color: transparent;
+						border: none;
+						
+					}
+				}
+
+				
+
+
+			}   
+		}
+
+		& .form{
+			width: 50%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			gap: var(--spacing-4);
+
+			.input-wrapper{
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				gap: var(--spacing-9);
+
+				& label{
+					font-size: var(--font-size-7);
+					font-weight: 700;
+
+					&.required{
+						&::after{
+							content: "*";
+							font-size: var(--font-size-7);
+							color: var(--accent-color-2);
+							margin-left: 6px;
+						}
+					}
+				}
+
+				& .input-ph{
+					display: flex;
+					align-items: flex-end;
+					width: 100%;
+					height: var(--spacing-3);
+					background-color: transparent;
+					border: none;
+					border-bottom: 1px solid var(--contrast-color);
+					font-size: var(--font-size-7);
+					opacity: 0.8;
+					padding-bottom: 12px;
+				}
+
+				& .textarea-ph{
+					display: flex;
+					width: 100%;
+					height: 200px;
+					background-color: rgba(255, 255, 255, 0.7);
+					border: 2px solid var(--contrast-color);
+					font-size: var(--font-size-7);
+					padding-bottom: 0px;
+					border-radius: 5px;
+					resize: none;
+
+					padding: 12px;
+				}
+
+				& .input{
+					width: 100%;
+					height: var(--spacing-3);
+					background-color: transparent;
+					border: none;
+					border-bottom: 1px solid var(--contrast-color);
+					font-size: var(--font-size-7);
+
+					&:focus{
+						outline: none;
+						border-bottom: 3px solid var(--contrast-color);
+						padding-bottom: 12px;
+						transition: padding-bottom 200ms;
+					}
+				}
+
+				& textarea{
+					width: 100%;
+					height: 200px;
+					background-color: rgba(255, 255, 255, 0.7);
+					border: none;
+					border: 2px solid var(--contrast-color);
+					padding: var(--spacing-4);
+					padding-bottom: 0px;
+					border-radius: 5px;
+					resize: none;
+					
+					max-width: 100%;
+
+					&:focus{
+						outline: none;
+						border: 3px solid var(--contrast-color);
+
+					}
+				}
+			}
+
+			& .submit-button{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				width: 100%;
+				height: 40px;
+				background-color: var(--contrast-color);
+				color: var(--main-color);
+				border: none;
+				border-radius: 10px;
+				cursor: pointer;
+
+				&:hover{
+					background-color: var(--accent-color-2);
+					transition: background-color 0.3s ease;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 1080px) {
+    .editable.contact-form{
+        .wrapper{
+			flex-direction: column;
+            .left-side{
+                flex-direction: column;
+                align-items: center;
+				width: 100%;
+
+
+					.image-wrapper{
+
+						& img{
+							width: 100%;
+						}
+					}
+
+                    .contact-welcome-text{
+                        .text-line-2::before{
+                            content: "fyll i formuläret till Nedan!";
+                        }
+                    }
+
+            }
+
+			& .form{
+				width: 100%;
+			}
+        }
+    }
+}

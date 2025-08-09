@@ -1,0 +1,389 @@
+.rendered.contact-form{
+    position: relative;
+	min-width: 100svw;
+	background-color: var(--accent-color-1);
+	margin: 0px;
+
+	& .title{
+		position: absolute;
+		top: -36px;
+		left: 0;
+
+		width: 50%;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+    & .loader{
+		position: absolute;
+        display: none;
+    }
+
+    &.loading{
+        & .loader{
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: var(--spacing-1);
+            z-index: 1;
+    
+            & .wrapper{
+				position: sticky;
+				top: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+				height: 100svh;
+				width: 100%;
+				background: rgba(244, 223, 196, 0.36);
+				  
+				&  .status-icon {
+					width: 50px;
+					height: 50px;
+
+					& path{
+						stroke: var(--contrast-color);
+					}
+
+					.morphing-path {
+						stroke-linecap: round;
+						stroke-linejoin: round;
+					  }
+				  }
+            }
+        
+            &.active{
+                & .spinner{
+                    transition: opacity 500ms ease-in;
+                    opacity: 1;
+                    animation: loader 1250ms infinite ease-in-out;
+                }
+        
+            }
+        }
+    }
+
+
+	& .wrapper{
+		position: relative;
+		display: flex;
+		align-items: flex-start;
+		gap: var(--spacing-1);
+        width: 100%;
+		max-width: var(--max-width);
+		margin: 0px auto;
+
+        & >*{
+            padding-top: var(--spacing-1);
+        }
+
+		& .left-side{
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			width: 50%;
+
+			& .image-wrapper{
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+
+				img{
+					width: 100%;
+					height: fit-content;
+					max-width: 460px;
+					min-height: 200px;
+				}
+			}
+
+			& .contact-welcome-text{
+				font-size: var(--font-size-3);
+				text-align: center;
+				opacity: 0.78;
+
+				margin: 0px;
+
+				.text-line-1::before{
+					content: "För att ta kontakt";
+					text-align: center;
+					opacity: 0.78;
+					
+				}
+
+				.text-line-2::before{
+					content: "fyll i formuläret till höger!";
+					text-align: center;
+					opacity: 0.78;
+				}
+			}
+
+			& .select-order-wrapper{
+				position: relative;
+				display: flex;
+				justify-content: space-evenly;
+				flex-wrap: wrap;
+				width: 100%;
+				margin-top: var(--spacing-4);
+				.order-type-wrapper{
+					display: flex;
+					align-items: center;
+					width: fit-content;
+					cursor: pointer;
+
+					.custom-radio-button{
+						position: relative;
+						display: flex;
+						align-items: center;
+						gap: var(--spacing-3);
+						height: 36px;
+						width: 36px;
+						border: 2px solid var(--contrast-color);
+						border-radius: var(--spacing-9);
+
+						&.checked{
+							& .line-1{
+							left: 5px;
+								transform-origin: left;
+								animation: draw-line-1 0.35s forwards;
+
+							}
+
+							& .line-2{
+								right: 5px;
+								transform-origin: right;
+								animation: draw-line-2 0.35s forwards;
+								animation-delay: 0.4s;
+
+							}
+						}
+
+
+						& input[type="radio"]{
+							opacity: 0;
+							position: absolute;
+							width: 100%;
+							height: 100%;    
+
+						}
+
+						& .line{
+							position: absolute;
+							top: 3px ;
+							width: 100%;
+							height: 4px;
+							background-color: var(--accent-color-2);
+							opacity: 0;
+							border-radius: 20px;
+
+
+							&.line-1{
+								transform: rotate(45deg);
+
+							}
+
+							&.line-2{
+								transform: rotate(-45deg);
+							}
+						}
+					}
+
+					& .label{
+						font-size: var(--font-size-6);
+						margin:var(--spacing-8);
+						background-color: transparent;
+						border: none;
+						
+					}
+				}
+
+				
+
+
+			}   
+		}
+
+		& .form{
+			width: 50%;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			gap: var(--spacing-4);
+
+			.input-wrapper{
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				gap: var(--spacing-9);
+
+				& label{
+					font-size: var(--font-size-7);
+					font-weight: 700;
+
+					&.required{
+						&::after{
+							content: "*";
+							font-size: var(--font-size-7);
+							color: var(--accent-color-2);
+							margin-left: 6px;
+						}
+					}
+				}
+
+				& .input{
+					width: 100%;
+					height: var(--spacing-3);
+					background-color: transparent;
+					border: none;
+					border-bottom: 2px solid var(--contrast-color);
+					font-size: var(--font-size-7);
+
+					&.input-error {
+						animation: shake 0.8s ease-in-out;
+						border-bottom: 2px solid var(--error-color);
+					}
+
+					&:focus{
+						outline: none;
+						border-bottom: 3px solid var(--contrast-color);
+						padding-bottom: 6px;
+						transition: padding-bottom 200ms;
+					}
+				}
+
+				& textarea{
+					width: 100%;
+					height: 200px;
+					background-color: rgba(255, 255, 255, 0.7);
+					border: none;
+					border: 2px solid var(--contrast-color);
+					padding:  20px var(--spacing-7);
+					padding-bottom: 0px;
+					border-radius: 5px;
+					resize: none;
+					
+					max-width: 100%;
+
+					&.input-error {
+						animation: shake 0.8s ease-in-out;
+						border: 2px solid var(--error-color);
+					}
+
+					&:focus{
+						outline: none;
+						border: 3px solid var(--contrast-color);
+					}
+				}
+			}
+
+			& .submit-button{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				width: 100%;
+				height: 40px;
+				background-color: var(--contrast-color);
+				color: var(--main-color);
+				border: none;
+				border-radius: 10px;
+				cursor: pointer;
+
+				&:hover{
+					background-color: var(--accent-color-2);
+					transition: background-color 0.3s ease;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 1080px) {
+    .rendered.contact-form{
+		margin-top: var(--spacing-1);
+		& .title{
+			width: 100%;
+		}
+
+
+        .wrapper{
+			flex-direction: column;
+			gap: 0px;
+            .left-side{
+                flex-direction: column;
+                align-items: center;
+				width: 100%;
+
+
+					.image-wrapper{
+
+						& img{
+							width: 100%;
+						}
+					}
+
+                    .contact-welcome-text{
+                        .text-line-2::before{
+                            content: "fyll i formuläret till Nedan!";
+                        }
+                    }
+
+            }
+
+			& .form{
+				width: 100%;
+			}
+        }
+    }
+}
+
+
+@keyframes draw-line-1 {
+    0%{
+        transform: rotate(45deg) scaleX(0);
+        opacity: 0;
+    }
+    10%{
+        opacity: 1;
+    }
+    100%{
+        transform: rotate(45deg) scaleX(1);
+        opacity: 1;
+    }
+}
+
+@keyframes draw-line-2 {
+    0%{
+        transform: rotate(-45deg) scaleX(0);
+        opacity: 0;
+
+    }
+    10%{
+        opacity: 1;
+    }
+    100%{
+        transform: rotate(-45deg) scaleX(1);
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+

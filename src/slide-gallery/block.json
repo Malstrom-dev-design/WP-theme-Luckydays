@@ -5,10 +5,21 @@
 	"version": "0.1.0",
 	"title": "slide-gallery",
 	"category": "text",
-	"icon": "smiley",
+	"icon": "",
 	"description": "slide-gallery",
 	"example": {},
-	"attributes":{},
+	"attributes":{
+		"title": {
+			"type": "string",
+			"default": "screentryck & illustrationer"
+		},
+		"imageUrls":{
+			"type": "Array",
+			"default": []
+		}
+
+
+	},
 	"supports": {
 		"html": false
 	},

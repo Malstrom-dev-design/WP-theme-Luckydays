@@ -1,0 +1,13 @@
+.rendered.gallery{
+	position: relative;
+	display: grid;
+	grid-template-columns: 3, 1fr;
+	grid-template-rows: repeat(1fr);
+
+    img{
+        height: 100%;
+        object-fit: cover;
+    }
+
+
+}

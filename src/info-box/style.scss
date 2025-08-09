@@ -1,0 +1,12 @@
+.info-box{
+	width: 100%;
+	& h3{
+		margin: 0px;
+	}
+
+	& p{
+		margin: 0px;
+		margin-top: var(--spacing-7);
+	}
+
+}

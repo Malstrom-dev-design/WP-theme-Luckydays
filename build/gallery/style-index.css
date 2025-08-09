@@ -1,0 +1,1 @@
+.rendered.gallery{display:grid;grid-template-columns:3,1fr;grid-template-rows:repeat(1fr);position:relative}.rendered.gallery img{height:100%;-o-object-fit:cover;object-fit:cover}

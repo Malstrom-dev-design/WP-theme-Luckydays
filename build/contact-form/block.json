@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "luckydaysprints/contact-form",
+  "version": "0.1.0",
+  "title": "contact-form",
+  "category": "text",
+  "icon": "",
+  "description": "contact-form",
+  "example": {},
+  "attributes": {
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "orderTypes": {
+      "type": "Array",
+      "default": [
+        "screentryck",
+        "illustration",
+        ""
+      ]
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "textdomain": "luckydaysprints",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

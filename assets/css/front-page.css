@@ -1,6 +1,11 @@
 section#landing{
+    position: sticky;
+    top: var(--nav-height);
+    z-index: -1;
+
     height: calc(100svh - var(--nav-height));
     width: 100%;
+    
 
     img{
         height: 100%;
@@ -8,6 +13,18 @@ section#landing{
 
         object-fit: cover;
         object-position: center;
+
+    }
+}
+
+main{
+    & .line{
+        width: 100svw;
+        max-width: none;
+        background-color: var(--accent-color-1);
+        height: var(--spacing-4);
+        padding: 0px;
+        margin: 0px;
 
     }
 }

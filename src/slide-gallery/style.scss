@@ -1,12 +1,78 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
+.slide-gallery.rendered{
+    display: flex;
+	flex-direction: column;
+	gap: var(--spacing-7);
+    width: 100%;
 
-.wp-block-test-luckydaysprints {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+    & .title{
+        width: 100%;
+    }
+
+    & .gallery-container{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        width: 100%;
+    
+        & .gallery-wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+    
+            & .gallery{
+                position: relative;
+                display: flex;
+                height: 100%;
+                width: 100%;
+                
+                img{
+                    position: absolute;
+                    height: calc(100% - 2px);
+                    aspect-ratio: 9/16;
+                    object-fit: cover;
+                    box-shadow: rgba(0, 0, 0, 0.25) 1.95px 1.95px 0px;
+                    transition: left 390ms ease-in-out;
+                }
+            }
+        }
+    
+        .slider-button{
+            position: absolute;
+            height: 40px;
+            width: 24px;
+            background: url('../../assets/media/icons/arrow.svg') no-repeat center center;
+            background-size: contain;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+    
+            &.previous{
+                left: 6px;
+            }
+    
+            &.next{
+                right: 6px;
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 460px){
+    .slide-gallery.rendered{
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-7);
+        width: 100%;
+    
+        & .title-container{
+            text-align: center;
+            font-size: var(--font-size-4);
+        }
+    }
 }

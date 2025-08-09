@@ -1,0 +1,48 @@
+.about.editable{
+	display: flex;
+	gap: var(--spacing-4);
+
+	width: 100%;
+
+	& .text-container{
+		width: 50%;
+		height: fit-content;
+
+		& .block-editor-inner-blocks{
+			& .block-editor-block-list__layout{
+				display: flex;
+				flex-direction: column;
+				gap: var(--spacing-2);
+			}
+		}
+	}
+
+	& .image-container{
+		display: flex;
+		justify-content: center;
+		
+		position: relative;
+		width: 50%;
+
+		& img{
+			width: 100%;
+			height: fit-content;
+			object-fit: cover;
+		}
+	}
+}
+
+@media only screen and (max-width: 1080px){
+	.about.editable{
+		flex-direction: column;
+		width: 100%;
+	
+		& .text-container{
+			width: 100%;
+		}
+	
+		& .image-container{
+			width: 100%;
+		}
+	}
+}

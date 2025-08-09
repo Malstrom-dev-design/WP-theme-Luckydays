@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuBtn = document.querySelector('#mobile-menu-button');
     const navContainer = document.querySelector('#nav-container');

@@ -4,6 +4,9 @@
     <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/media/images/landing.jpg');?>"alt="">
 </section>
 <main>
+    <div class="line"></div>
+
+    <?php the_content();?>
 </main>
 
 <?php get_footer();?>

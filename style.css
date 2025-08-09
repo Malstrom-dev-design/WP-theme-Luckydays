@@ -34,6 +34,7 @@ Theme Name: Lucky days prints theme
     --contrast-color: #1D1E23;
     --accent-color-1: #FBC438;
     --accent-color-2: #B3350C;
+    --error-color: var(--accent-color-2);
 
     --nav-height: 80px;
 
@@ -72,9 +73,15 @@ body{
 }
 
 main{
-    max-width: var(--max-width);
-    margin: 0 auto;
-    height: calc(100svh - var(--nav-height));
+    min-height: calc(100svh - var(--nav-height));
+    background-color: var(--main-color);
+
+    & >*{
+        margin: var(--spacing-6) auto;
+        padding: var(--spacing-5);
+        max-width: var(--max-width);
+    }
+
 }
 
 footer{
@@ -103,6 +110,58 @@ footer{
     }
 }
 
+button{
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+/* texts */
+
+p{
+    font-size: var(--font-size-7);
+    font-weight: 300;
+}
+
+h6{
+    font-size: var(--font-size-6);
+}
+
+h5{
+    font-size: var(--font-size-5);
+}
+
+h4{
+    font-size: var(--font-size-4);
+}
+
+h3{
+    font-size: var(--font-size-3);
+}
+
+h2{
+    font-size: var(--font-size-2);
+}
+
+h1{
+    font-size: var(--font-size-1);
+}
+
+img{
+    &.ratio-3-4{
+        aspect-ratio: 3/4;
+    }
+
+    &.ratio-4-3{
+        aspect-ratio: 4/3;
+    }
+
+    &.ratio-9-16{
+        aspect-ratio: 9/16;
+    }
+}
+
+/* Nav */
 #nav-container{
     position: relative;
     width: 100svw;
@@ -121,12 +180,13 @@ footer{
         width: 100%;
         margin: 0 auto;
         background-color: var(--main-color);
+        z-index: 100;
 
 
         #logo{
             position: absolute;
-            bottom: 0;
-            transform: translateY(50%);
+            /* bottom: 0; */
+            /* transform: translateY(50%); */
             background: url(./assets/media/images/logo.png) no-repeat;
             background-size:contain;
             height: 100px;
@@ -167,10 +227,26 @@ footer{
 }
 /* Responsive */
 
+@media only screen and (min-width: 1079px){
+    /* Nav */
+#nav-container{
+    .wrapper{
+        #logo{
+            bottom: 0;
+            transform: translateY(50%);    
+        }
+    }
+}
+}
+
 @media only screen and (max-width: 1080px){
 
     #nav-container{
         .wrapper{
+            #logo{
+                height: 60px;
+        
+            }
 
             #nav{
                 display: none;
@@ -232,6 +308,16 @@ footer{
                 }
             }
         }
+    }
+
+    main{
+    
+        & >*{
+            margin: var(--spacing-6) auto;
+            padding: var(--spacing-7);
+            max-width: var(--max-width);
+        }
+    
     }
 }
 
