@@ -2,7 +2,7 @@ import { __ } from '@wordpress/i18n';
 import './editor.scss';
 import { useBlockProps, MediaUploadCheck, MediaUpload, RichText } from '@wordpress/block-editor';
 import {Button} from '@wordpress/components';
-import {useState, useRef} from '@wordpress/element'
+import EditButton from '../../components/Edit-Button';
 
 export default function Edit({attributes, setAttributes}) {
 	const {imageUrls, title} = attributes;
@@ -46,9 +46,25 @@ export default function Edit({attributes, setAttributes}) {
 						{imageUrls && imageUrls.map((url, i) => (
 							<div key={i} className='image-wrapper'>
 								<div className='actions'>
-									<button className='reorder-image-btn down primary' onClick={()=> {changeImagePlacement(i, -1)}}></button>
-									<button className='remove-image-btn primary' onClick={()=> {removeImage(i)}}></button>
-									<button className='reorder-image-btn up primary' onClick={()=> {changeImagePlacement(i, 1)}}></button>
+									<EditButton 
+										type="arrow" 
+										color="white" 
+										className="primary plus add-order-type-btn"
+										onClick={()=> {changeImagePlacement(i, -1)}}
+									/>
+									<EditButton 
+										type="close" 
+										color="white" 
+										className="primary plus add-order-type-btn"
+										onClick={()=> {removeImage(i)}}
+									/>
+									<EditButton 
+										type="arrow" 
+										color="white" 
+										className="primary plus add-order-type-btn"
+										onClick={()=> {changeImagePlacement(i, 1)}}
+										transform='rotate(180deg)'
+									/>
 								</div>
 								<img src={url} />
 							</div>

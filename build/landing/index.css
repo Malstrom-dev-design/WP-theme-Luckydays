@@ -1,0 +1,1 @@
+.landing.editable{align-items:center;display:flex;height:calc(100svh - var(--nav-height) - var(--spacing-5));justify-content:center;margin:0;min-width:100svw;padding:0!important;width:100%}.landing.editable img{background-color:var(--main-color);height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;width:100%}

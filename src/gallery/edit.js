@@ -5,24 +5,27 @@ import {Button} from '@wordpress/components'
 import EditButton from '../../components/Edit-Button'
 
 export default function Edit({attributes, setAttributes}) {
-	const {imageUrls} = attributes;
+	const {imageData, } = attributes;
 	const blockProps = useBlockProps({ className: 'gallery editable edit-hover' });
 	
 	const changeImagePlacement = (index, direction) => {
-		const urlsCopy = [...imageUrls];
+		const imageDataCopy = [...imageData];
+
 		const newIndex = index + direction;
-		if (newIndex < 0 || newIndex >= imageUrls.length) {
+		if (newIndex < 0 || newIndex >= imageData.length) {
 			return
 		}
 
-		[urlsCopy[newIndex], urlsCopy[index]] = [urlsCopy[index], urlsCopy[newIndex]];
-		setAttributes({imageUrls: urlsCopy});
+		[imageDataCopy[newIndex], imageDataCopy[index]] = [imageDataCopy[index], imageDataCopy[newIndex]];
+		setAttributes({
+			imageData: imageDataCopy,
+		});
 	}
 
 	const removeImage = (index) => {
-		const urlsCopy = [...imageUrls];
+		const imageDataCopy = [...imageData];
 		
-		setAttributes({imageUrls: urlsCopy.filter((url, i) => i !== index)})
+		setAttributes({imageData: imageDataCopy.filter((img, i) => i !== index),})
 	}
 
 
@@ -31,7 +34,11 @@ export default function Edit({attributes, setAttributes}) {
 			<div className='actions'>
 				<MediaUploadCheck>
 					<MediaUpload
-						onSelect={(media) => setAttributes({imageUrls: [... imageUrls, media.url]})}
+						onSelect={(media) => setAttributes({
+							imageData: [{
+								url: media.url, id: media.id
+							}, ... imageData],
+						})}
 						allowedTypes={['image']}
 						render={({ open }) => (
 							<Button onClick={open} className='add-image-btn primary'>
@@ -41,17 +48,37 @@ export default function Edit({attributes, setAttributes}) {
 					/>
 				</MediaUploadCheck>
 			</div>
-			
-			{imageUrls && imageUrls.map((url, i) => (
-				<div key={i} className='image-wrapper'>
-					<div className='actions'>
-						<button className='reorder-image-btn down primary' onClick={()=> {changeImagePlacement(i, -1)}}></button>
-						<button className='remove-image-btn primary' onClick={()=> {removeImage(i)}}></button>
-						<button className='reorder-image-btn up primary' onClick={()=> {changeImagePlacement(i, 1)}}></button>
+		
+
+			<div className='wrapper'>
+				{imageData && imageData.map((image, i) => (
+					<div key={i} className='image-wrapper'>
+						<div className='actions'>
+							<EditButton 
+								type="arrow" 
+								color="white" 
+								className="primary plus add-order-type-btn"
+								style={"transform: rotate(180deg)"}
+								onClick={()=> {changeImagePlacement(i, -1)}}
+							/>
+							<EditButton 
+								type="close" 
+								color="white" 
+								className="primary plus add-order-type-btn"
+								onClick={()=> {removeImage(i)}}
+							/>
+							<EditButton 
+								type="arrow" 
+								color="white" 
+								className="primary plus add-order-type-btn"
+								onClick={()=> {changeImagePlacement(i, 1)}}
+								transform='rotate(180deg)'
+							/>
+						</div>
+						<img src={image.url} id={image.id} />
 					</div>
-					<img src={url} />
-				</div>
-			))}
+				))}
+			</div>
 		</div>
 	);
 }

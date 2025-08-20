@@ -15,7 +15,7 @@
 		},
 		"orderTypes": {
 			"type": "Array",
-			"default": ["screentryck", "illustration", ""]
+			"default": ["screentryck", "illustration"]
 		}
 	},
 	"supports": {

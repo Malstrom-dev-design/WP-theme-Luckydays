@@ -54,8 +54,7 @@ return array(
 				'type' => 'Array',
 				'default' => array(
 					'screentryck',
-					'illustration',
-					''
+					'illustration'
 				)
 			)
 		),
@@ -81,13 +80,7 @@ return array(
 			
 		),
 		'attributes' => array(
-			'imageIds' => array(
-				'type' => 'Array',
-				'default' => array(
-					
-				)
-			),
-			'imageUrls' => array(
+			'imageData' => array(
 				'type' => 'Array',
 				'default' => array(
 					
@@ -101,7 +94,8 @@ return array(
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
-		'viewScript' => 'file:./view.js'
+		'viewScript' => 'file:./view.js',
+		'render' => 'file:./render.php'
 	),
 	'info-box' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
@@ -134,6 +128,33 @@ return array(
 		'style' => 'file:./style-index.css',
 		'viewScript' => 'file:./view.js'
 	),
+	'landing' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'luckydaysprints/landing',
+		'version' => '0.1.0',
+		'title' => 'landing',
+		'category' => 'text',
+		'icon' => '',
+		'description' => 'landing',
+		'example' => array(
+			
+		),
+		'attributes' => array(
+			'imageUrl' => array(
+				'type' => 'string',
+				'default' => ''
+			)
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'textdomain' => 'luckydaysprints',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
+	),
 	'slide-gallery' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
@@ -152,7 +173,7 @@ return array(
 				'default' => 'screentryck & illustrationer'
 			),
 			'imageUrls' => array(
-				'type' => 'Array',
+				'type' => 'array',
 				'default' => array(
 					
 				)

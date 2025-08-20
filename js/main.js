@@ -1,3 +1,10 @@
+window.addEventListener('load', ()=>{
+    const pageLoader = document.querySelector('.page-loader');
+    if (pageLoader) {
+        pageLoader.classList.add('finished-loading');
+    }
+})
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuBtn = document.querySelector('#mobile-menu-button');
@@ -9,3 +16,4 @@ document.addEventListener('DOMContentLoaded', () => {
         navContainer.classList.toggle('mobile-menu-active');
     })
 });
+

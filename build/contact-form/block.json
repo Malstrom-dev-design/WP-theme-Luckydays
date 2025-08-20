@@ -17,8 +17,7 @@
       "type": "Array",
       "default": [
         "screentryck",
-        "illustration",
-        ""
+        "illustration"
       ]
     }
   },

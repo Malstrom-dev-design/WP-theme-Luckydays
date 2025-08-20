@@ -1,17 +1,17 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "luckydaysprints/gallery",
+  "name": "luckydaysprints/landing",
   "version": "0.1.0",
-  "title": "gallery",
+  "title": "landing",
   "category": "text",
   "icon": "",
-  "description": "gallery",
+  "description": "landing",
   "example": {},
   "attributes": {
-    "imageData": {
-      "type": "Array",
-      "default": []
+    "imageUrl": {
+      "type": "string",
+      "default": ""
     }
   },
   "supports": {
@@ -21,6 +21,5 @@
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "viewScript": "file:./view.js",
-  "render": "file:./render.php"
+  "viewScript": "file:./view.js"
 }

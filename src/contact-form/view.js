@@ -2,13 +2,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let loading = false;
 
     const contactFormDomEl = document.querySelector('.contact-form.rendered');
+    const loader = contactFormDomEl.querySelector('.loader');
+    const loaderMessageContainer = loader.querySelector('.message');
     const form = contactFormDomEl.querySelector('form');
-    const formInputs = form.querySelectorAll('input,textareaa');
+    const formInputs = form.querySelectorAll('input,textarea');
     const requiredFormInputs = form.querySelectorAll('input,textarea');
 
     // check
     if (!contactFormDomEl) {
-        console.log("no contact form found");
         return
     }
 
@@ -49,11 +50,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
             return false
         }
     }
+    const stopLoading = () => {
+        loading = false;
+        loaderMessageContainer.textContent = ""
+
+        contactFormDomEl.classList.remove('loading');
+        loader.classList.remove('check');
+        loader.classList.remove('error');
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (loading) { return }
         loading = true;
+        closeMessageButton.removeEventListener('click', stopLoading);
+
 
         if (inputErrorOccured()) {
             loading = false;
@@ -64,25 +75,62 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 
 
-        
+
         const formData = {
-            name2: "", // ta bort som nyckel, dubbelkolla API
         }
 
+        formInputs.forEach(input => {
+            const name = input.name;
+            const value = input.value;
+            formData[name] = value;
+        });
 
-        // const {success, data } = await fetchFunction({method: 'POST', formData, url: "https://malstrom.art/API/mail/api.php"} );
-        // console.log(success, data);
-        
+        let orderType = "";
+        contactFormDomEl.querySelectorAll('.order-type-wrapper input').forEach(typeInput => {
+            if (typeInput.checked) {
+                orderType = typeInput.value
+            }
+        })
+        formData.subject = `${orderType} förfrågan`;
+        formData.target = "malstrom";
 
-        // if (!success) {
-        //     alert('it failed');
-        // }
+        const rqst = new Request('https://malstrom.art/API/mail/api.php', 
+            {
+                method: "POST", 
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            
 
-        setTimeout(()=>{
-            contactFormDomEl.classList.remove('loading');
-            loading = false;
-        }, 2000)
+        try {
+            const response = await fetch(rqst);
+            const data = await response.json();
+            console.log(response, data);
+            
+
+            if (!response.ok) {
+                loaderMessageContainer.textContent = "misslyckades att skicka!"
+                loader.classList.add('error');
+                closeMessageButton.addEventListener('click', stopLoading);
+            }
+
+            if (response.ok) {
+                loaderMessageContainer.textContent = "meddelandet har skickats!"
+                loader.classList.add('check');
+                closeMessageButton.addEventListener('click', stopLoading);
+            }
+            
+        } catch (error) {
+            loaderMessageContainer.textContent = "Något gick fel! Vänligen prova igen"
+            loader.classList.add('error');
+            closeMessageButton.addEventListener('click', stopLoading);
+        }
+
+    
     }
+
 
         // attach handler functions
     // handle select order type
@@ -94,66 +142,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const submitButton = form.querySelector('.submit-button');
     submitButton.addEventListener('click', handleSubmit);
 
+    const closeMessageButton = loader.querySelector('.close-btn');
 
-
-
-
-
-
-
-
-
-
-    // animation
-    class SVGPathAnimator {
-        constructor(svgElement) {
-          this.path = svgElement.querySelector('.morphing-path');
-          this.paths = {
-            spinner: "M50 10 A40 40 0 1 1 49.999 10",
-            checkmark: "M20 50 L40 70 L80 30",
-            error: "M30 30 L70 70 M70 30 L30 70"
-          };
-        }
-      
-        animateTo(targetPath, duration = 500) {
-          const endPath = this.paths[targetPath];
-          
-          // Use a different approach - manually animate the path
-          this.path.style.transition = `d ${duration}ms ease-in-out`;
-          this.path.setAttribute('d', endPath);
-          
-          // Reset transition after animation
-          setTimeout(() => {
-            this.path.style.transition = '';
-          }, duration);
-        }
-      
-        showSpinner() {
-          this.path.setAttribute('d', this.paths.spinner);
-          // Add rotation animation to the SVG element instead of the path
-          this.path.parentElement.style.animation = 'spin 1s linear infinite';
-        }
-      
-        showSuccess() {
-          this.path.parentElement.style.animation = 'none';
-          return this.animateTo('checkmark');
-        }
-      
-        showError() {
-          this.path.parentElement.style.animation = 'none';
-          return this.animateTo('error');
-        }
-    }
-
-    const animator = new SVGPathAnimator(contactFormDomEl.querySelector('.loader .wrapper .status-icon'));
-    animator.showSpinner();
-
-    document.querySelector('.loader').addEventListener('click', ()=> {
-        animator.showSuccess();
-
-        setTimeout(()=>{
-            animator.showError();
-        }, 2000)
-    });
 
 });

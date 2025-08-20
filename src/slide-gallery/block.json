@@ -14,7 +14,7 @@
 			"default": "screentryck & illustrationer"
 		},
 		"imageUrls":{
-			"type": "Array",
+			"type": "array",
 			"default": []
 		}
 

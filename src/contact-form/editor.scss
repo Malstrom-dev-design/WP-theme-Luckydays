@@ -1,9 +1,22 @@
 .editable.contact-form{
 	min-width: 100svw;
 	background-color: var(--accent-color-1);
-	padding: 0px !important;
 	margin: 0px;
 	padding: var(--spacing-4) !important;
+
+	& .title{
+		position: absolute;
+		top: -36px;
+		margin: 0;
+
+		width: 50%;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		z-index: 2;
+	}
 
 
 	& .wrapper{
@@ -14,10 +27,6 @@
 		width: 100%;
 		max-width: var(--max-width);
 		margin: 0px auto;
-
-		& >*{
-			padding-top: var(--spacing-1);
-		}
 
 		& .left-side{
 			display: flex;

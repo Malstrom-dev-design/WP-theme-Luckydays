@@ -6,6 +6,9 @@
     <?php wp_head() ?>
 </head>
 <body>
+<div class="page-loader">
+    <div class="text">laddar..</div>
+</div>
 
 <?php get_template_part("/templates/nav")?>
 

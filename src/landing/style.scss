@@ -1,4 +1,4 @@
-section#landing{
+.landing.rendered{
     position: sticky;
     top: var(--nav-height);
     z-index: -1;
@@ -13,18 +13,6 @@ section#landing{
 
         object-fit: cover;
         object-position: center;
-
-    }
-}
-
-main{
-    & .line{
-        width: 100svw;
-        max-width: none;
-        background-color: var(--accent-color-1);
-        height: var(--spacing-5);
-        padding: 0px;
-        margin: 0px;
-
+		background-color: var(--main-color);
     }
 }

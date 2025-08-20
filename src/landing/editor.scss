@@ -1,0 +1,20 @@
+.landing.editable{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    height: calc(100svh - var(--nav-height) - var(--spacing-5));
+    width: 100%;
+
+	min-width: 100svw;
+	margin: 0px;    
+	padding: 0px !important;
+
+    img{
+        height: 100%;
+        width: 100%;
+
+        object-fit: cover;
+        object-position: center;
+		background-color: var(--main-color);
+    }
+}

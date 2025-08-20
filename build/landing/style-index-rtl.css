@@ -1,0 +1,1 @@
+.landing.rendered{height:calc(100svh - var(--nav-height) - var(--spacing-5));position:sticky;top:var(--nav-height);width:100%;z-index:-1}.landing.rendered img{background-color:var(--main-color);height:100%;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;width:100%}
